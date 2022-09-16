@@ -9,7 +9,6 @@ const PaperInformation = (props) => {
     following
   } = userState
 
-
   return(
     <Paper elevation={3}>
       <Stack>

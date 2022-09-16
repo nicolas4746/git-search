@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Stack, Typography } from "@mui/material";
 
 import PaperInformation from "../Components/PaperInformation";
-/* import LocationInformation from "../../componets/LocationInformation"; */
+import LocationInformation from "../Components/LocationInformation";
 
 const Description = (props) => {
   const { userState } = props;
@@ -12,11 +12,11 @@ const Description = (props) => {
       <Stack>
         {bio !== null 
           ? <Typography>{bio}</Typography>
-          : <Typography>Lorem ipsum dolor sit amet. Ea excepturi doloribus ea praesentium nihil nam dolore laboriosam ad fugit nobis</Typography>
+          : <Typography>Perfil sin bio</Typography>
         }
       </Stack>
       <PaperInformation userState={userState} />
-      {/* <LocationInformation userState={userState} /> */}
+      <LocationInformation userState={userState} />
     </Fragment>
   )
 };
