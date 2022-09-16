@@ -7,7 +7,7 @@ import UserCard from './containers/UserCard'
 const App = () => {
 
   const [inputUser, setInputUser] = useState('octocat');
-  const [userState, setUserState] = useState('inputUser');
+  const [userState, setUserState] = useState(inputUser);
   const [notFound,setNotFound] = useState(false);
 
   const gettingUser = async (user) =>{
@@ -20,13 +20,13 @@ const App = () => {
     if(userResponse.message === 'Not Found'){
       const { octocat } = localStorage;
       setInputUser(octocat);
+      setUserState(JSON.parse(octocat))
       setNotFound(true);
     } else {
       setUserState(userResponse)
       setNotFound(false)
     }
   }
-  console.log(userState);
 
   useEffect(() =>{
     gettingUser(inputUser)
