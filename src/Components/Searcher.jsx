@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { IconButton, Stack, TextField } from "@mui/material";
+import { IconButton, Stack, TextField, Typography } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
 const Searcher = (props) => {
 
-  const { setInputUser } = props;
+  const { setInputUser, notFound } = props;
 
   const [valueInput, setValueInput] = useState('');
 
@@ -18,35 +18,41 @@ const Searcher = (props) => {
   }
 
   return(
-    <Stack  //componente para utilizar flex-box
-      direction= 'row'
-      sx={{
-        marginTop: '30px',
-        width: '80%'
-      }}
-
-    >
-      <TextField
-        id="outlined-basic"
-        label="GitHub User"
-        placeholder="Octocat"
-        variant="outlined"
-        size="small"
-        value={valueInput}
-        onChange={onSearchValueChange}
+    <>
+      <Stack  //componente para utilizar flex-box
+        direction= 'row'
         sx={{
-          width: '100%',
+          marginTop: '30px',
+          width: '80%'
         }}
-      />
-      <IconButton
-      onClick={handleSubmit}
-      size="small"
-      sx={{
-        left:'-45px'
-      }} >
-        <SearchIcon/>
-      </IconButton> 
-    </Stack>
+        >
+        <TextField
+          id="outlined-basic"
+          label="GitHub User"
+          placeholder="Octocat"
+          variant="outlined"
+          size="small"
+          value={valueInput}
+          onChange={onSearchValueChange}
+          sx={{
+            width: '100%',
+          }}
+        />
+        <IconButton
+          onClick={handleSubmit}
+          size="small"
+          sx={{
+            left:'-45px'
+          }} >
+          <SearchIcon/>
+        </IconButton> 
+      </Stack>
+      <Typography color="red">
+        {
+          notFound? "User not Found" : ""
+        }
+      </Typography>
+    </>
   )
 }
 

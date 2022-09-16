@@ -9,10 +9,10 @@ const Description = (props) => {
   const { bio } = userState
   return(
     <Fragment>
-      <Stack>
+      <Stack sx={{justifyContent: 'center'}}>
         {bio !== null 
-          ? <Typography>{bio}</Typography>
-          : <Typography>Perfil sin bio</Typography>
+          ? <Typography variant="body1">{bio}</Typography>
+          : <Typography variant="body1">Profile without bio</Typography>
         }
       </Stack>
       <PaperInformation userState={userState} />

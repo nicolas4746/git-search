@@ -14,7 +14,7 @@ const App = () => {
     const userResponse = await getGitHubUser(user)
 
     if(userState === 'octocat'){
-      localStorage.setItem('octocat', userResponse)
+      localStorage.setItem('octocat', JSON.stringify(userResponse))
     }
 
     if(userResponse.message === 'Not Found'){
@@ -23,6 +23,7 @@ const App = () => {
       setNotFound(true);
     } else {
       setUserState(userResponse)
+      setNotFound(false)
     }
   }
   console.log(userState);
@@ -42,7 +43,11 @@ const App = () => {
       flexDirection: 'column',
       alignItems: 'center'
     }} >
-      <Searcher inputUser={inputUser} setInputUser={setInputUser} />
+      <Searcher 
+      inputUser={inputUser} 
+      setInputUser={setInputUser} 
+      notFound={notFound} 
+      />
       <UserCard userState={userState}/>
     </Container>
   )
